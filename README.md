@@ -26,7 +26,7 @@ Populate the Munki server (optional):
 The easiest way to populate the Munki server is to hook the munki-data volume up to a Samba container and share it out to a Mac, using my [SMB-Munki container](https://registry.hub.docker.com/u/nmcspadden/smb-munki/):  
 
 1.	`docker pull nmcspadden/smb-munki`
-2.	`docker run -d -p 445:445 --volumes-from munki-data --name smb nmcspadden/smb-munki`
+2.	`docker run -dt -p 445:445 --volumes-from munki-data --name smb nmcspadden/smb-munki`
 3.	You may need to change permissions on the mounted share, or change the samba.conf to allow for guest read/write permissions. One example:  
 	`chown -R nobody:nogroup /munki_repo`  
 	`chmod -R ugo+rwx /munki_repo`
